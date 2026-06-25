@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="game"
-config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+run/main_scene="uid://buaq673iyr04d"
+config/features=PackedStringArray("4.7", "C#", "Forward Plus")
+config/icon="res://Assets/icon.svg"
+
+[autoload]
+
+GameManager="*uid://d3xssi0q671s7"
 
 [display]
 

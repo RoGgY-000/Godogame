@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://pp3fspfvic01"]
+
+[ext_resource type="Script" uid="uid://ccow07vr7usf1" path="res://Scenes/Tower/Tower.cs" id="1_ndpwd"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6jpva"]
+size = Vector2(100, 100)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l0cfn"]
+radius = 356.88
+
+[node name="Tower" type="MeshInstance2D" unique_id=1674797036]
+modulate = Color(1, 0.6039216, 1, 1)
+mesh = SubResource("QuadMesh_6jpva")
+script = ExtResource("1_ndpwd")
+ReloadTime = 1.0
+Damage = 10
+
+[node name="TargetTrigger" type="Area2D" parent="." unique_id=200545308]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetTrigger" unique_id=1279202941]
+shape = SubResource("CircleShape2D_l0cfn")

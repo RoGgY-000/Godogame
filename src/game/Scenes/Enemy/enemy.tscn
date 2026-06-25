@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://gbgmc8mxfeg5"]
+
+[ext_resource type="Script" uid="uid://byvumnsxnffih" path="res://Scenes/Enemy/Enemy.cs" id="1_hghv2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_l0cfn"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejhkv"]
+size = Vector2(50, 50)
+
+[node name="MeshInstance2D" type="MeshInstance2D" unique_id=618155994]
+mesh = SubResource("QuadMesh_l0cfn")
+script = ExtResource("1_hghv2")
+Health = 100
+Speed = 250.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1371877244]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=95390059]
+shape = SubResource("RectangleShape2D_ejhkv")
