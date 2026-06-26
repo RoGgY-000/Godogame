@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Tower : MeshInstance2D
+public partial class BaseTower : MeshInstance2D
 {
 	[Export]
 	public float ReloadTime { get; set; }
@@ -10,7 +10,7 @@ public partial class Tower : MeshInstance2D
 	public int Damage { get; set; }
 
 	private Area2D TargetTrigger;
-	private List<Enemy> TargetEnemies;
+	private List<BaseEnemy> TargetEnemies;
 	private double timer;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -18,7 +18,7 @@ public partial class Tower : MeshInstance2D
 		TargetTrigger = GetNode<Area2D>("TargetTrigger");
 		TargetTrigger.AreaEntered += AddTarget;
 		TargetTrigger.AreaExited += RemoveTarget;
-		TargetEnemies = new List<Enemy>();
+		TargetEnemies = new List<BaseEnemy>();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,13 +30,13 @@ public partial class Tower : MeshInstance2D
 
 	private void AddTarget (Area2D area)
 	{
-		Enemy enemy = area.GetParent<Enemy>();
+		BaseEnemy enemy = area.GetParent<BaseEnemy>();
 		TargetEnemies.Add(enemy);
 		
 	}
 	private void RemoveTarget (Area2D area)
 	{
-		Enemy enemy = area.GetParent<Enemy>();
+		BaseEnemy enemy = area.GetParent<BaseEnemy>();
 		TargetEnemies.Remove(enemy);
 	}
 	private void CheckTargets ()
@@ -47,9 +47,10 @@ public partial class Tower : MeshInstance2D
 			Fire(TargetEnemies[0]);
 		}
 	}
-	private void Fire (Enemy enemy)
+	private void Fire (BaseEnemy enemy)
 	{
 		enemy.Health -= Damage;
 		timer = 0;
+		GD.Print(enemy.Health);
 	}
 }

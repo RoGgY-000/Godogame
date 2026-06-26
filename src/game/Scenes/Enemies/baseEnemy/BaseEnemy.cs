@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Enemy : MeshInstance2D
+public partial class BaseEnemy : MeshInstance2D
 {
 	PathFollow2D pathFollow;
 	[Export]

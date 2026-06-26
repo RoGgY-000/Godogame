@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://buaq673iyr04d"]
 
-[ext_resource type="PackedScene" uid="uid://gbgmc8mxfeg5" path="res://Scenes/Enemy/enemy.tscn" id="1_bo1nx"]
-[ext_resource type="PackedScene" uid="uid://pp3fspfvic01" path="res://Scenes/Tower/tower.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://pp3fspfvic01" path="res://Scenes/Towers/baseTower/BaseTower.tscn" id="1_7dmm6"]
+[ext_resource type="PackedScene" uid="uid://gbgmc8mxfeg5" path="res://Scenes/Enemies/baseEnemy/BaseEnemy.tscn" id="2_kka7n"]
 
 [sub_resource type="Curve2D" id="Curve2D_l0cfn"]
 _data = {
@@ -9,10 +9,7 @@ _data = {
 }
 point_count = 4
 
-[node name="Main" type="Node2D" unique_id=1653948589]
-
-[node name="Tower" parent="." unique_id=1674797036 instance=ExtResource("2_8gbba")]
-position = Vector2(456, 257)
+[node name="mainScene" type="Node2D" unique_id=1653948589]
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1786036714]
 position = Vector2(605, 312)
@@ -22,4 +19,11 @@ curve = SubResource("Curve2D_l0cfn")
 position = Vector2(-388, -233)
 rotation = -0.062279016
 
-[node name="MeshInstance2D" parent="Path2D/PathFollow2D" unique_id=618155994 instance=ExtResource("1_bo1nx")]
+[node name="BaseEnemy" parent="Path2D/PathFollow2D" unique_id=618155994 instance=ExtResource("2_kka7n")]
+Health = 100
+Speed = 300.0
+
+[node name="BaseTower" parent="." unique_id=1674797036 instance=ExtResource("1_7dmm6")]
+position = Vector2(605, 306)
+ReloadTime = 1.0
+Damage = 20
