@@ -1,15 +1,15 @@
-using System;
 using Godot;
 
 public partial class BaseEnemy : MeshInstance2D
 {
-	PathFollow2D pathFollow;
-	Label HPText;
-	ProgressBar HPBar;
 	[Export]
 	public int Health { get; set; }
 	[Export]
 	public float Speed { get; set; }
+
+	private PathFollow2D pathFollow;
+	private Label HPText;
+	private ProgressBar HPBar;
 
 	public override void _Ready()
 	{
@@ -19,7 +19,6 @@ public partial class BaseEnemy : MeshInstance2D
 		HPBar.MaxValue = Health;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		pathFollow.Progress += (float) delta * Speed;

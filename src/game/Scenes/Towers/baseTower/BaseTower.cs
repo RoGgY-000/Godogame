@@ -12,7 +12,7 @@ public partial class BaseTower : MeshInstance2D
 	private Area2D TargetTrigger;
 	private List<BaseEnemy> TargetEnemies;
 	private double timer;
-	// Called when the node enters the scene tree for the first time.
+
 	public override void _Ready()
 	{
 		TargetTrigger = GetNode<Area2D>("TargetTrigger");
@@ -21,7 +21,6 @@ public partial class BaseTower : MeshInstance2D
 		TargetEnemies = new List<BaseEnemy>();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		timer += delta;
