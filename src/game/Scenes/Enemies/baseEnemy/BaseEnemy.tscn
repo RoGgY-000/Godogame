@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://gbgmc8mxfeg5"]
 
 [ext_resource type="Script" uid="uid://byvumnsxnffih" path="res://Scenes/Enemies/baseEnemy/BaseEnemy.cs" id="1_ek3a1"]
+[ext_resource type="FontFile" uid="uid://dh21u826xw3fl" path="res://Assets/gamefont-Regular.ttf" id="2_jhwni"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_l0cfn"]
 size = Vector2(50, 50)
@@ -16,3 +17,14 @@ script = ExtResource("1_ek3a1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=95390059]
 shape = SubResource("RectangleShape2D_ejhkv")
+
+[node name="Label" type="Label" parent="HitBox" unique_id=1004472552]
+offset_left = -24.93
+offset_top = -48.1
+offset_right = 24.869999
+offset_bottom = -25.099998
+theme_override_fonts/font = ExtResource("2_jhwni")
+text = "ХП"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

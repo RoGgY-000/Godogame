@@ -18,12 +18,13 @@ curve = SubResource("Curve2D_l0cfn")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=2114893888]
 position = Vector2(-388, -233)
 rotation = -0.062279016
+loop = false
 
 [node name="BaseEnemy" parent="Path2D/PathFollow2D" unique_id=618155994 instance=ExtResource("2_kka7n")]
-Health = 100
-Speed = 300.0
+Health = 200
+Speed = 100.0
 
 [node name="BaseTower" parent="." unique_id=1674797036 instance=ExtResource("1_7dmm6")]
 position = Vector2(605, 306)
-ReloadTime = 1.0
-Damage = 20
+ReloadTime = 1.025
+Damage = -1
