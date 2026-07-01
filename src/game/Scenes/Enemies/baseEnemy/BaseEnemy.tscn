@@ -9,6 +9,12 @@ size = Vector2(50, 50)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejhkv"]
 size = Vector2(50, 50)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvb7c"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppqdc"]
+bg_color = Color(0, 0.78431374, 0, 1)
+
 [node name="BaseEnemy" type="MeshInstance2D" unique_id=618155994]
 mesh = SubResource("QuadMesh_l0cfn")
 script = ExtResource("1_ek3a1")
@@ -18,13 +24,24 @@ script = ExtResource("1_ek3a1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=95390059]
 shape = SubResource("RectangleShape2D_ejhkv")
 
-[node name="Label" type="Label" parent="HitBox" unique_id=1004472552]
-offset_left = -24.93
-offset_top = -48.1
-offset_right = 24.869999
-offset_bottom = -25.099998
+[node name="HPText" type="Label" parent="HitBox" unique_id=1004472552]
+z_index = 1
+offset_left = -25.015
+offset_top = -41.37
+offset_right = 24.990002
+offset_bottom = -24.369999
 theme_override_fonts/font = ExtResource("2_jhwni")
-text = "ХП"
+text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="HPBar" type="ProgressBar" parent="HitBox" unique_id=2104321000]
+offset_left = -25.015
+offset_top = -42.12
+offset_right = 24.990002
+offset_bottom = -25.144999
+theme_override_styles/background = SubResource("StyleBoxFlat_rvb7c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ppqdc")
+value = 50.0
+show_percentage = false

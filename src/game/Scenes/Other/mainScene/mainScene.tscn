@@ -27,4 +27,4 @@ Speed = 100.0
 [node name="BaseTower" parent="." unique_id=1674797036 instance=ExtResource("1_7dmm6")]
 position = Vector2(605, 306)
 ReloadTime = 1.025
-Damage = -1
+Damage = 20

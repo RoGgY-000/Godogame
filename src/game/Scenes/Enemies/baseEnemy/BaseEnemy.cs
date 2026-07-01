@@ -4,7 +4,8 @@ using Godot;
 public partial class BaseEnemy : MeshInstance2D
 {
 	PathFollow2D pathFollow;
-	Label hp;
+	Label HPText;
+	ProgressBar HPBar;
 	[Export]
 	public int Health { get; set; }
 	[Export]
@@ -13,25 +14,19 @@ public partial class BaseEnemy : MeshInstance2D
 	public override void _Ready()
 	{
 		pathFollow = GetParent<PathFollow2D>();
-		hp = GetNode<Label>("HitBox/Label");
+		HPText = GetNode<Label>("HitBox/HPText");
+		HPBar = GetNode<ProgressBar>("HitBox/HPBar");
+		HPBar.MaxValue = Health;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		pathFollow.Progress += (float) delta * Speed;
-		UpdateHPBar();
+		UpdateHP();
 		CorrectRotation();
 		GD.Print(GlobalRotationDegrees);
-		if ( Health <= 0 )
-		{
-			Kill();
-		}
-		if ( pathFollow.ProgressRatio >= 0.99f )
-		{
-			GameManager.Instance.PlayerHealth -= Health;
-			Kill();
-		}
+		
 	}
 	private void CorrectRotation()
 	{
@@ -44,11 +39,24 @@ public partial class BaseEnemy : MeshInstance2D
 			GlobalRotationDegrees += 180;
 		}
 	}
-	private void UpdateHPBar ()
+	private void UpdateHP ()
 	{
-		if ( hp != null )
+		if ( Health <= 0 )
 		{
-			hp.Text = Health.ToString();
+			Kill();
+		}
+		if ( pathFollow.ProgressRatio >= 0.99f )
+		{
+			GameManager.Instance.PlayerHealth -= Health;
+			Kill();
+		}
+		if ( HPText != null )
+		{
+			HPText.Text = Health.ToString();
+		}
+		if ( HPBar != null )
+		{
+			HPBar.Value = Health;
 		}
 	}
 
