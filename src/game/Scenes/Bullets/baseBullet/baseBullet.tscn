@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cpil35rnmw7at"]
+
+[ext_resource type="Script" uid="uid://1dobg2fq2vap" path="res://Scenes/Bullets/baseBullet/BaseBullet.cs" id="1_dqgs0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ue5ku"]
+
+[node name="baseBullet" type="MeshInstance2D" unique_id=1633255210]
+mesh = SubResource("CapsuleMesh_ue5ku")
+script = ExtResource("1_dqgs0")

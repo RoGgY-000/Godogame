@@ -46,8 +46,21 @@ public partial class BaseTower : MeshInstance2D
 			Fire(TargetEnemies[0]);
 		}
 	}
+	// fix this sheet
 	private void Fire (BaseEnemy enemy)
 	{
+		Path2D bulletPath = new Path2D();
+		PackedScene p = (PackedScene) GD.Load("res://Scenes/Bullets/baseBullet/baseBullet.tscn");
+		MeshInstance2D n =(MeshInstance2D) p.Instantiate();
+		AddChild(n);
+		n.GlobalPosition = new Vector2(5, 5);
+		bulletPath.Curve = new Curve2D();
+		bulletPath.Curve.AddPoint(GlobalPosition);
+		bulletPath.Curve.AddPoint(enemy.GlobalPosition);
+		PathFollow2D bulletFollow = new PathFollow2D();
+		bulletPath.AddChild(bulletFollow);
+		BaseBullet bullet = new BaseBullet();
+		bulletFollow.AddChild(bullet);
 		enemy.Health -= Damage;
 		timer = 0;
 	}
