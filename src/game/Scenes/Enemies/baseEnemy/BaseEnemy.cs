@@ -24,7 +24,6 @@ public partial class BaseEnemy : MeshInstance2D
 		pathFollow.Progress += (float) delta * Speed;
 		UpdateHP();
 		CorrectRotation();
-		GD.Print(GlobalRotationDegrees);
 		
 	}
 	private void CorrectRotation()

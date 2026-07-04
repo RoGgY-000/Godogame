@@ -50,6 +50,5 @@ public partial class BaseTower : MeshInstance2D
 	{
 		enemy.Health -= Damage;
 		timer = 0;
-		GD.Print(enemy.Health);
 	}
 }

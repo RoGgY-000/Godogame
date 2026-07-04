@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://buaq673iyr04d"]
 
 [ext_resource type="PackedScene" uid="uid://pp3fspfvic01" path="res://Scenes/Towers/baseTower/BaseTower.tscn" id="1_7dmm6"]
+[ext_resource type="PackedScene" uid="uid://dsbe1bjq223it" path="res://Scenes/Other/playerScene/playerScene.tscn" id="1_kka7n"]
 [ext_resource type="PackedScene" uid="uid://gbgmc8mxfeg5" path="res://Scenes/Enemies/baseEnemy/BaseEnemy.tscn" id="2_kka7n"]
 
 [sub_resource type="Curve2D" id="Curve2D_l0cfn"]
@@ -10,6 +11,8 @@ _data = {
 point_count = 4
 
 [node name="mainScene" type="Node2D" unique_id=1653948589]
+
+[node name="PlayerScene" parent="." unique_id=998109892 instance=ExtResource("1_kka7n")]
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1786036714]
 position = Vector2(605, 312)

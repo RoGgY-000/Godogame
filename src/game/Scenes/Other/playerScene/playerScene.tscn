@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dsbe1bjq223it"]
+
+[ext_resource type="Script" uid="uid://dej4wyjjpfqbl" path="res://Scenes/Other/playerScene/PlayerScene.cs" id="1_n7tlo"]
+[ext_resource type="FontFile" uid="uid://dh21u826xw3fl" path="res://Assets/gamefont-Regular.ttf" id="2_nytn7"]
+
+[node name="PlayerScene" type="Node2D" unique_id=998109892]
+script = ExtResource("1_n7tlo")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1925048768]
+
+[node name="Label" type="Label" parent="Camera2D" unique_id=87354851]
+offset_left = -640.0
+offset_top = 337.0
+offset_right = -600.0
+offset_bottom = 360.0
+theme_override_fonts/font = ExtResource("2_nytn7")
+text = "ДЕБАГ"
