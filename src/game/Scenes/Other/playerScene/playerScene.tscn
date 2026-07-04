@@ -8,10 +8,20 @@ script = ExtResource("1_n7tlo")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1925048768]
 
-[node name="Label" type="Label" parent="Camera2D" unique_id=87354851]
+[node name="Health Label" type="Label" parent="Camera2D" unique_id=87354851]
 offset_left = -640.0
-offset_top = 337.0
-offset_right = -600.0
+offset_top = 335.0
+offset_right = -555.0
 offset_bottom = 360.0
 theme_override_fonts/font = ExtResource("2_nytn7")
+theme_override_font_sizes/font_size = 24
 text = "ДЕБАГ"
+
+[node name="ESC Label" type="Label" parent="Camera2D" unique_id=1152670791]
+offset_left = -640.0
+offset_top = -360.0
+offset_right = -583.0
+offset_bottom = -337.0
+theme_override_fonts/font = ExtResource("2_nytn7")
+theme_override_font_sizes/font_size = 24
+text = "Пауза"

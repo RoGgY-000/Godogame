@@ -13,6 +13,7 @@ point_count = 4
 [node name="mainScene" type="Node2D" unique_id=1653948589]
 
 [node name="PlayerScene" parent="." unique_id=998109892 instance=ExtResource("1_kka7n")]
+position = Vector2(637, 360)
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1786036714]
 position = Vector2(605, 312)
@@ -25,9 +26,9 @@ loop = false
 
 [node name="BaseEnemy" parent="Path2D/PathFollow2D" unique_id=618155994 instance=ExtResource("2_kka7n")]
 Health = 200
-Speed = 100.0
+Speed = 300.0
 
 [node name="BaseTower" parent="." unique_id=1674797036 instance=ExtResource("1_7dmm6")]
 position = Vector2(605, 306)
 ReloadTime = 1.025
-Damage = 20
+Damage = -1
