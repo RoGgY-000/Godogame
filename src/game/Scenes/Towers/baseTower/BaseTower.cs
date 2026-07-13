@@ -48,22 +48,16 @@ public partial class BaseTower : MeshInstance2D
 			Fire(TargetEnemies[0]);
 		}
 	}
-	// fix this sheet
 	private void Fire (BaseEnemy enemy)
 	{
 		SpawnBullet(enemy);
 		timer = 0;
 	}
 
-	private BaseBullet SpawnBullet (BaseEnemy enemy)
+	private void SpawnBullet (BaseEnemy enemy)
 	{
-		Path2D bulletPath = new Path2D();
-		bulletPath.Curve = new Curve2D();
-		bulletPath.Curve.AddPoint(GlobalPosition);
-		bulletPath.Curve.AddPoint(enemy.GlobalPosition);
-		PathFollow2D bulletFollow = new PathFollow2D();
-		bulletPath.AddChild(bulletFollow);
-		MeshInstance2D bullet = BulletScene.Instantiate<MeshInstance2D>();
+		Path2D bullet = BulletScene.Instantiate<Path2D>();
+		bullet.Position = new Vector2(10, 10);
 		AddChild(bullet);
 	}
 }
