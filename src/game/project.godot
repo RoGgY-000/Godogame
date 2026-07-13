@@ -35,6 +35,7 @@ project/assembly_name="game"
 folder_colors={
 "res://Assets/": "gray",
 "res://Scenes/": "gray",
+"res://Scenes/Bullets/baseBullet/": "yellow",
 "res://Scenes/Enemies/": "red",
 "res://Scenes/Other/": "blue",
 "res://Scenes/Towers/": "teal",

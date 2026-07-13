@@ -7,16 +7,20 @@ public partial class BaseEnemy : MeshInstance2D
 	[Export]
 	public float Speed { get; set; }
 
+	private Area2D hitBox;
 	private PathFollow2D pathFollow;
 	private Label HPText;
 	private ProgressBar HPBar;
 
 	public override void _Ready()
 	{
+		hitBox = GetNode<Area2D>("HitBox");
 		pathFollow = GetParent<PathFollow2D>();
 		HPText = GetNode<Label>("HitBox/HPText");
 		HPBar = GetNode<ProgressBar>("HitBox/HPBar");
+
 		HPBar.MaxValue = Health;
+		hitBox.BodyEntered += OnBodyEntered;
 	}
 
 	public override void _Process(double delta)
@@ -55,6 +59,15 @@ public partial class BaseEnemy : MeshInstance2D
 		if ( HPBar != null )
 		{
 			HPBar.Value = Health;
+		}
+	}
+
+	private void OnBodyEntered (Node2D body)
+	{
+		if ( body is BaseBullet bullet )
+		{
+			bullet.QueueFree();
+			Health -= bullet.Damage;
 		}
 	}
 

@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://pp3fspfvic01"]
 
 [ext_resource type="Script" uid="uid://ccow07vr7usf1" path="res://Scenes/Towers/baseTower/BaseTower.cs" id="1_mm5uj"]
+[ext_resource type="PackedScene" uid="uid://cpil35rnmw7at" path="res://Scenes/Bullets/baseBullet/baseBullet.tscn" id="2_orx0w"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6jpva"]
 size = Vector2(100, 100)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0cfn"]
-radius = 356.88
+radius = 956.32684
 
 [node name="BaseTower" type="MeshInstance2D" unique_id=1674797036]
-modulate = Color(1, 0.6039216, 1, 1)
+self_modulate = Color(1, 0, 1, 1)
 mesh = SubResource("QuadMesh_6jpva")
 script = ExtResource("1_mm5uj")
+BulletScene = ExtResource("2_orx0w")
 
 [node name="TargetTrigger" type="Area2D" parent="." unique_id=200545308]
 

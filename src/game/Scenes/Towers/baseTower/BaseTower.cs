@@ -10,6 +10,8 @@ public partial class BaseTower : MeshInstance2D
 	public float ReloadTime { get; set; }
 	[Export]
 	public int Damage { get; set; }
+	[Export]
+	public float AttackRange { get; set; }
 
 	private Area2D TargetTrigger;
 	private List<BaseEnemy> TargetEnemies;
@@ -51,13 +53,16 @@ public partial class BaseTower : MeshInstance2D
 	private void Fire (BaseEnemy enemy)
 	{
 		SpawnBullet(enemy);
-		timer = 0;
+		timer = 0d;
 	}
 
 	private void SpawnBullet (BaseEnemy enemy)
 	{
-		Path2D bullet = BulletScene.Instantiate<Path2D>();
-		bullet.Position = new Vector2(10, 10);
+		BaseBullet bullet = BulletScene.Instantiate<BaseBullet>();
+		bullet.Target = enemy;
+		bullet.Position = new Vector2(0, 0);
+		bullet.Range *= AttackRange;
+		bullet.Damage *= Damage;
 		AddChild(bullet);
 	}
 }
