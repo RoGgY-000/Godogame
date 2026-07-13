@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://pp3fspfvic01" path="res://Scenes/Towers/baseTower/BaseTower.tscn" id="1_7dmm6"]
 [ext_resource type="PackedScene" uid="uid://dsbe1bjq223it" path="res://Scenes/Other/playerScene/playerScene.tscn" id="1_kka7n"]
 [ext_resource type="PackedScene" uid="uid://gbgmc8mxfeg5" path="res://Scenes/Enemies/baseEnemy/BaseEnemy.tscn" id="2_kka7n"]
+[ext_resource type="PackedScene" uid="uid://cpil35rnmw7at" path="res://Scenes/Bullets/baseBullet/baseBullet.tscn" id="4_iuwpb"]
 
 [sub_resource type="Curve2D" id="Curve2D_l0cfn"]
 _data = {
@@ -30,5 +31,6 @@ Speed = 300.0
 
 [node name="BaseTower" parent="." unique_id=1674797036 instance=ExtResource("1_7dmm6")]
 position = Vector2(605, 306)
+BulletScene = ExtResource("4_iuwpb")
 ReloadTime = 1.025
 Damage = -1

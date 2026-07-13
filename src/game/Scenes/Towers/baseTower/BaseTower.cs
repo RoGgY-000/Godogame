@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public partial class BaseTower : MeshInstance2D
 {
 	[Export]
+	public PackedScene BulletScene { get; set; }
+	[Export]
 	public float ReloadTime { get; set; }
 	[Export]
 	public int Damage { get; set; }
@@ -49,19 +51,19 @@ public partial class BaseTower : MeshInstance2D
 	// fix this sheet
 	private void Fire (BaseEnemy enemy)
 	{
+		SpawnBullet(enemy);
+		timer = 0;
+	}
+
+	private BaseBullet SpawnBullet (BaseEnemy enemy)
+	{
 		Path2D bulletPath = new Path2D();
-		PackedScene p = (PackedScene) GD.Load("res://Scenes/Bullets/baseBullet/baseBullet.tscn");
-		MeshInstance2D n =(MeshInstance2D) p.Instantiate();
-		AddChild(n);
-		n.GlobalPosition = new Vector2(5, 5);
 		bulletPath.Curve = new Curve2D();
 		bulletPath.Curve.AddPoint(GlobalPosition);
 		bulletPath.Curve.AddPoint(enemy.GlobalPosition);
 		PathFollow2D bulletFollow = new PathFollow2D();
 		bulletPath.AddChild(bulletFollow);
-		BaseBullet bullet = new BaseBullet();
-		bulletFollow.AddChild(bullet);
-		enemy.Health -= Damage;
-		timer = 0;
+		MeshInstance2D bullet = BulletScene.Instantiate<MeshInstance2D>();
+		AddChild(bullet);
 	}
 }
