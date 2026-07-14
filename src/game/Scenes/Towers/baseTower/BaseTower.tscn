@@ -3,15 +3,16 @@
 [ext_resource type="Script" uid="uid://ccow07vr7usf1" path="res://Scenes/Towers/baseTower/BaseTower.cs" id="1_mm5uj"]
 [ext_resource type="PackedScene" uid="uid://cpil35rnmw7at" path="res://Scenes/Bullets/baseBullet/baseBullet.tscn" id="2_orx0w"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_6jpva"]
-size = Vector2(100, 100)
+[sub_resource type="SphereMesh" id="SphereMesh_bi37a"]
+radius = 100.0
+height = 200.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0cfn"]
-radius = 956.32684
+radius = 500.0
 
 [node name="BaseTower" type="MeshInstance2D" unique_id=1674797036]
 self_modulate = Color(1, 0, 1, 1)
-mesh = SubResource("QuadMesh_6jpva")
+mesh = SubResource("SphereMesh_bi37a")
 script = ExtResource("1_mm5uj")
 BulletScene = ExtResource("2_orx0w")
 
