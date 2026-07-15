@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dsbe1bjq223it"]
 
-[ext_resource type="Script" uid="uid://dej4wyjjpfqbl" path="res://Scenes/Other/playerScene/PlayerScene.cs" id="1_n7tlo"]
+[ext_resource type="Script" uid="uid://dej4wyjjpfqbl" path="res://Scenes/Player/playerScene/PlayerScene.cs" id="1_n7tlo"]
 [ext_resource type="FontFile" uid="uid://dh21u826xw3fl" path="res://Assets/gamefont-Regular.ttf" id="2_nytn7"]
 
 [node name="PlayerScene" type="Node2D" unique_id=998109892]
