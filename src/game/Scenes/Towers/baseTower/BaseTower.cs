@@ -6,10 +6,16 @@ public partial class BaseTower : MeshInstance2D
 {
 	[Export]
 	public PackedScene BulletScene { get; set; }
+
+	[Export]
+	public Node2D BulletSpawnPoint { get; set; }
+
 	[Export]
 	public float ReloadTime { get; set; }
+
 	[Export]
 	public int Damage { get; set; }
+
 	[Export]
 	public float AttackRange { get; set; }
 
@@ -20,8 +26,8 @@ public partial class BaseTower : MeshInstance2D
 	public override void _Ready()
 	{
 		TargetTrigger = GetNode<Area2D>("TargetTrigger");
-		TargetTrigger.AreaEntered += AddTarget;
-		TargetTrigger.AreaExited += RemoveTarget;
+		TargetTrigger.AreaEntered += OnAreaEntered;
+		TargetTrigger.AreaExited += OnAreaExited;
 		TargetEnemies = new List<BaseEnemy>();
 	}
 
@@ -31,16 +37,20 @@ public partial class BaseTower : MeshInstance2D
 		CheckTargets();
 	}
 
-	private void AddTarget (Area2D area)
+	private void OnAreaEntered (Area2D area)
 	{
-		BaseEnemy enemy = area.GetParent<BaseEnemy>();
-		TargetEnemies.Add(enemy);
+		if ( area.GetParent<BaseEnemy>() is BaseEnemy enemy )
+		{
+			TargetEnemies.Add(enemy);
+		}
 		
 	}
-	private void RemoveTarget (Area2D area)
+	private void OnAreaExited (Area2D area)
 	{
-		BaseEnemy enemy = area.GetParent<BaseEnemy>();
-		TargetEnemies.Remove(enemy);
+		if ( area.GetParent<BaseEnemy>() is BaseEnemy enemy )
+		{
+			TargetEnemies.Remove(enemy);
+		}
 	}
 	private void CheckTargets ()
 	{
@@ -60,7 +70,7 @@ public partial class BaseTower : MeshInstance2D
 	{
 		BaseBullet bullet = BulletScene.Instantiate<BaseBullet>();
 		bullet.Target = enemy;
-		bullet.Position = new Vector2(0, 0);
+		bullet.Position = BulletSpawnPoint.Position;
 		bullet.Range *= AttackRange;
 		bullet.Damage *= Damage;
 		AddChild(bullet);

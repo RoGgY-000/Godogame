@@ -18,6 +18,8 @@ bg_color = Color(0, 0.78431374, 0, 1)
 [node name="BaseEnemy" type="MeshInstance2D" unique_id=618155994]
 mesh = SubResource("QuadMesh_l0cfn")
 script = ExtResource("1_ek3a1")
+Health = 10
+Speed = 100.0
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1371877244]
 

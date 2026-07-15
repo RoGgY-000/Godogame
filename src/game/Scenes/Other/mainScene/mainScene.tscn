@@ -25,11 +25,6 @@ rotation = -0.062279016
 loop = false
 
 [node name="BaseEnemy" parent="Path2D/PathFollow2D" unique_id=618155994 instance=ExtResource("2_kka7n")]
-Health = 200
-Speed = 300.0
 
 [node name="BaseTower" parent="." unique_id=1674797036 instance=ExtResource("1_7dmm6")]
 position = Vector2(605, 306)
-ReloadTime = 0.1
-Damage = 3
-AttackRange = 1000.0
