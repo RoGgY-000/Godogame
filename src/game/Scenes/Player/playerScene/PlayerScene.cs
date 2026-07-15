@@ -5,46 +5,65 @@ using System.ComponentModel;
 public partial class PlayerScene : Node2D
 {
 	[Export]
-	public float cameraSpeed = 5f;
-	public bool inPauseMenu = false;
-	public Label healthLabel;
+	public float CameraSpeed = 5f;
 
-	public override void _Ready()
+	private Camera2D _camera;
+	private Label _pauseLabel;
+	private bool _inPauseMenu = false;
+
+	public override void _Ready ()
 	{
-		healthLabel = GetNode<Label>("Camera2D/Health Label");
+		_camera = GetNode<Camera2D>("Camera2D");
+		_pauseLabel = GetNode<Label>("Camera2D/ESC Label");
 		// Input.MouseMode = Input.MouseModeEnum.Confined;
 	}
 
-	
-	public override void _Process(double delta)
+	public override void _Process (double delta)
 	{
 		Move();
-		UpdateHealthLabel();
-		// MouseFocus();
+		Zoom();
+		MouseFocus();
 	}
 
-    private void Move()
+	public override void _Input (InputEvent e)
 	{
-		GlobalPosition += 
+
+	}
+
+	private void Move ()
+	{
+		GlobalPosition +=
 			new Vector2(
 				Input.GetAxis("A", "D"),
-				Input.GetAxis("W", "S")) * cameraSpeed;
+				Input.GetAxis("W", "S"))
+			* CameraSpeed;
 	}
 
-	private void MouseFocus()
+	private void Zoom ()
 	{
-		if(Input.IsActionJustPressed("PAUSE (ESC)"))
+		float zoomScale = Input.GetAxis("MouseWheelDown", "MouseWheelUp");
+		if ( zoomScale != 0 )
 		{
-			inPauseMenu = !inPauseMenu;
-			GD.Print("1");
+			GD.Print(zoomScale);
+			_camera.Zoom *= zoomScale * 2;
+		}
+	}
+
+	private void MouseFocus ()
+	{
+		if ( Input.IsActionJustPressed("PAUSE (ESC)") )
+		{
+			_inPauseMenu = !_inPauseMenu;
+			_pauseLabel.Visible = _inPauseMenu;
 		}
 
-		if(inPauseMenu) {Input.MouseMode = Input.MouseModeEnum.Visible;}
-		else if(!inPauseMenu) {Input.MouseMode = Input.MouseModeEnum.Confined;}
-	}
-
-	private void UpdateHealthLabel()
-	{
-		healthLabel.Text = GameManager.Instance.PlayerHealth.ToString();
+		if ( _inPauseMenu )
+		{
+			Input.MouseMode = Input.MouseModeEnum.Visible;
+		}
+		else if ( !_inPauseMenu )
+		{
+			Input.MouseMode = Input.MouseModeEnum.Confined;
+		}
 	}
 }

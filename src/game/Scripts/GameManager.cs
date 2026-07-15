@@ -3,14 +3,13 @@ public partial class GameManager : Node2D
 {
 	public static GameManager Instance { get; private set; }
 
-	[Export]
-	public int PlayerHealth { get; set; }
+	public bool IsInPause = false;
 
-	public override void _Ready()
+	public override void _Ready ()
 	{
 	}
 
-	public override void _Process(double delta)
+	public override void _Process (double delta)
 	{
 	}
 
@@ -22,7 +21,7 @@ public partial class GameManager : Node2D
 		}
 		else
 		{
-			Free();
+			QueueFree();
 		}
 	}
 }

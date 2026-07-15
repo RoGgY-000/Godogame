@@ -4,33 +4,34 @@ public partial class BaseEnemy : MeshInstance2D
 {
 	[Export]
 	public int Health { get; set; }
+
 	[Export]
 	public float Speed { get; set; }
 
-	private Area2D hitBox;
-	private PathFollow2D pathFollow;
-	private Label HPText;
-	private ProgressBar HPBar;
+	private Area2D _hitBox;
+	private PathFollow2D _pathFollow;
+	private Label _HPText;
+	private ProgressBar _HPBar;
 
-	public override void _Ready()
+	public override void _Ready ()
 	{
-		hitBox = GetNode<Area2D>("HitBox");
-		pathFollow = GetParent<PathFollow2D>();
-		HPText = GetNode<Label>("HitBox/HPText");
-		HPBar = GetNode<ProgressBar>("HitBox/HPBar");
+		_hitBox = GetNode<Area2D>("HitBox");
+		_pathFollow = GetParent<PathFollow2D>();
+		_HPText = GetNode<Label>("HitBox/HPText");
+		_HPBar = GetNode<ProgressBar>("HitBox/HPBar");
 
-		HPBar.MaxValue = Health;
-		hitBox.BodyEntered += OnBodyEntered;
+		_HPBar.MaxValue = Health;
+		_hitBox.BodyEntered += OnBodyEntered;
 	}
 
-	public override void _Process(double delta)
+	public override void _Process (double delta)
 	{
-		pathFollow.Progress += (float) delta * Speed;
+		_pathFollow.Progress += (float) delta * Speed;
 		UpdateHP();
 		CorrectRotation();
-		
+
 	}
-	private void CorrectRotation()
+	private void CorrectRotation ()
 	{
 		if ( GlobalRotationDegrees > 90 )
 		{
@@ -47,18 +48,17 @@ public partial class BaseEnemy : MeshInstance2D
 		{
 			Kill();
 		}
-		if ( pathFollow.ProgressRatio >= 0.99f )
+		if ( _pathFollow.ProgressRatio >= 0.99f )
 		{
-			GameManager.Instance.PlayerHealth -= Health;
 			Kill();
 		}
-		if ( HPText != null )
+		if ( _HPText != null )
 		{
-			HPText.Text = Health.ToString();
+			_HPText.Text = Health.ToString();
 		}
-		if ( HPBar != null )
+		if ( _HPBar != null )
 		{
-			HPBar.Value = Health;
+			_HPBar.Value = Health;
 		}
 	}
 

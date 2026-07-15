@@ -19,21 +19,21 @@ public partial class BaseTower : MeshInstance2D
 	[Export]
 	public float AttackRange { get; set; }
 
-	private Area2D TargetTrigger;
-	private List<BaseEnemy> TargetEnemies;
-	private double timer;
+	private Area2D _targetTrigger;
+	private List<BaseEnemy> _targetEnemies;
+	private double _timer;
 
-	public override void _Ready()
+	public override void _Ready ()
 	{
-		TargetTrigger = GetNode<Area2D>("TargetTrigger");
-		TargetTrigger.AreaEntered += OnAreaEntered;
-		TargetTrigger.AreaExited += OnAreaExited;
-		TargetEnemies = new List<BaseEnemy>();
+		_targetTrigger = GetNode<Area2D>("TargetTrigger");
+		_targetTrigger.AreaEntered += OnAreaEntered;
+		_targetTrigger.AreaExited += OnAreaExited;
+		_targetEnemies = new List<BaseEnemy>();
 	}
 
-	public override void _Process(double delta)
+	public override void _Process (double delta)
 	{
-		timer += delta;
+		_timer += delta;
 		CheckTargets();
 	}
 
@@ -41,29 +41,29 @@ public partial class BaseTower : MeshInstance2D
 	{
 		if ( area.GetParent<BaseEnemy>() is BaseEnemy enemy )
 		{
-			TargetEnemies.Add(enemy);
+			_targetEnemies.Add(enemy);
 		}
-		
+
 	}
 	private void OnAreaExited (Area2D area)
 	{
 		if ( area.GetParent<BaseEnemy>() is BaseEnemy enemy )
 		{
-			TargetEnemies.Remove(enemy);
+			_targetEnemies.Remove(enemy);
 		}
 	}
 	private void CheckTargets ()
 	{
-		if ( timer >= ReloadTime
-			&& TargetEnemies.Count > 0 )
+		if ( _timer >= ReloadTime
+			&& _targetEnemies.Count > 0 )
 		{
-			Fire(TargetEnemies[0]);
+			Fire(_targetEnemies[0]);
 		}
 	}
 	private void Fire (BaseEnemy enemy)
 	{
 		SpawnBullet(enemy);
-		timer = 0d;
+		_timer = 0d;
 	}
 
 	private void SpawnBullet (BaseEnemy enemy)
