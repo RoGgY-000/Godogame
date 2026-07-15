@@ -2,24 +2,19 @@
 
 [ext_resource type="Script" uid="uid://1dobg2fq2vap" path="res://Scenes/Bullets/baseBullet/BaseBullet.cs" id="1_dqgs0"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ejhkv"]
-radius = 5.0
-height = 30.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l0cfn"]
-radius = 5.0
+[sub_resource type="PrismMesh" id="PrismMesh_orx0w"]
+size = Vector3(5, 10, 1)
 
 [node name="baseBullet" type="StaticBody2D" unique_id=1582333241]
-rotation = 1.5707964
 script = ExtResource("1_dqgs0")
 Speed = 1000.0
 Damage = 1
 Range = 1.0
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=91377103]
-rotation = 1.5707964
-mesh = SubResource("CapsuleMesh_ejhkv")
+rotation = -1.5707964
+mesh = SubResource("PrismMesh_orx0w")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=599318501]
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_l0cfn")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=222024874]
+rotation = -3.1415927
+polygon = PackedVector2Array(-5, 2.1855695e-07, 5, -2.5, 5, 2.5)

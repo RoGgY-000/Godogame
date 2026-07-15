@@ -16,7 +16,7 @@ point_count = 4
 position = Vector2(637, 360)
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1786036714]
-position = Vector2(605, 312)
+position = Vector2(611, 326)
 curve = SubResource("Curve2D_l0cfn")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=2114893888]
@@ -27,4 +27,13 @@ loop = false
 [node name="BaseEnemy" parent="Path2D/PathFollow2D" unique_id=618155994 instance=ExtResource("2_kka7n")]
 
 [node name="BaseTower" parent="." unique_id=1674797036 instance=ExtResource("1_7dmm6")]
-position = Vector2(605, 306)
+position = Vector2(428, 197)
+
+[node name="BaseTower2" parent="." unique_id=1796764444 instance=ExtResource("1_7dmm6")]
+position = Vector2(890, 151)
+
+[node name="BaseTower3" parent="." unique_id=1939564839 instance=ExtResource("1_7dmm6")]
+position = Vector2(370, 552)
+
+[node name="BaseTower4" parent="." unique_id=911486263 instance=ExtResource("1_7dmm6")]
+position = Vector2(843, 536)

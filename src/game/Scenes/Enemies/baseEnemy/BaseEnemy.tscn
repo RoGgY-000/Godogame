@@ -4,10 +4,9 @@
 [ext_resource type="FontFile" uid="uid://dh21u826xw3fl" path="res://Assets/gamefont-Regular.ttf" id="2_jhwni"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_l0cfn"]
-size = Vector2(50, 50)
+size = Vector2(20, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejhkv"]
-size = Vector2(50, 50)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvb7c"]
 bg_color = Color(0, 0, 0, 0)
@@ -28,22 +27,24 @@ shape = SubResource("RectangleShape2D_ejhkv")
 
 [node name="HPText" type="Label" parent="HitBox" unique_id=1004472552]
 z_index = 1
-offset_left = -25.015
-offset_top = -41.37
-offset_right = 24.990002
-offset_bottom = -24.369999
+offset_left = -10.0
+offset_top = -17.0
+offset_right = 10.0
+offset_bottom = -9.0
 theme_override_fonts/font = ExtResource("2_jhwni")
+theme_override_font_sizes/font_size = 7
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="HPBar" type="ProgressBar" parent="HitBox" unique_id=2104321000]
-offset_left = -25.015
-offset_top = -42.12
-offset_right = 24.990002
-offset_bottom = -25.144999
+offset_left = -10.0
+offset_top = -16.0
+offset_right = 10.0
+offset_bottom = -11.0
 theme_override_styles/background = SubResource("StyleBoxFlat_rvb7c")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ppqdc")
 value = 50.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true

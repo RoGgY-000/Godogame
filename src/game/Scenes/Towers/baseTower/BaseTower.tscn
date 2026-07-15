@@ -4,18 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://cpil35rnmw7at" path="res://Scenes/Bullets/baseBullet/baseBullet.tscn" id="2_orx0w"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_bi37a"]
-radius = 100.0
-height = 200.0
+radius = 25.0
+height = 50.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0cfn"]
-radius = 500.0
+radius = 150.0
 
 [node name="BaseTower" type="MeshInstance2D" unique_id=1674797036 node_paths=PackedStringArray("BulletSpawnPoint")]
 self_modulate = Color(1, 0, 1, 1)
 mesh = SubResource("SphereMesh_bi37a")
 script = ExtResource("1_mm5uj")
 BulletScene = ExtResource("2_orx0w")
-BulletSpawnPoint = NodePath("Node2D")
+BulletSpawnPoint = NodePath("BulletSpawnPoint")
 ReloadTime = 1.0
 Damage = 1
 AttackRange = 500.0
@@ -25,5 +25,5 @@ AttackRange = 500.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetTrigger" unique_id=1279202941]
 shape = SubResource("CircleShape2D_l0cfn")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1990295330]
-position = Vector2(0, -100)
+[node name="BulletSpawnPoint" type="Node2D" parent="." unique_id=1990295330]
+position = Vector2(0, -25)
