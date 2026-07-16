@@ -64,7 +64,7 @@ public partial class BaseTower : MeshInstance2D
 
 	private void OnAreaEntered (Area2D area)
 	{
-		if ( area.GetParent<BaseEnemy>() is BaseEnemy enemy )
+		if ( area.GetParentOrNull<BaseEnemy>() is BaseEnemy enemy )
 		{
 			_targetEnemies.Add(enemy);
 		}
