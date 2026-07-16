@@ -15,19 +15,52 @@ public partial class PlayerScene : Node2D
 	{
 		_camera = GetNode<Camera2D>("Camera2D");
 		_pauseLabel = GetNode<Label>("Camera2D/ESC Label");
-		// Input.MouseMode = Input.MouseModeEnum.Confined;
 	}
 
 	public override void _Process (double delta)
 	{
 		Move();
-		Zoom();
-		MouseFocus();
 	}
 
 	public override void _Input (InputEvent e)
 	{
+		if ( e is InputEventKey keyEvent )
+		{
+			ProcessKeyboardInput(keyEvent);
+		}
+		else if ( e is InputEventMouseButton mouseButtonEvent )
+		{
+			ProcessMouseInput(mouseButtonEvent);
+		}
+	}
 
+	private void ProcessMouseInput (InputEventMouseButton mouseButtonEvent)
+	{
+		switch ( mouseButtonEvent.ButtonIndex )
+		{
+			case MouseButton.WheelUp:
+				_camera.Zoom += Vector2.One;
+				break;
+			case MouseButton.WheelDown:
+				_camera.Zoom *= 0.5f;
+				break;
+			default:
+				break;
+		}
+	}
+
+	private void ProcessKeyboardInput (InputEventKey keyEvent)
+	{
+		switch ( keyEvent.Keycode )
+		{
+			case Key.Escape when keyEvent.IsPressed():
+				_inPauseMenu = !_inPauseMenu;
+				_pauseLabel.Visible = _inPauseMenu;
+				MouseFocus();
+				break;
+			default:
+				break;
+		}
 	}
 
 	private void Move ()
@@ -39,24 +72,8 @@ public partial class PlayerScene : Node2D
 			* CameraSpeed;
 	}
 
-	private void Zoom ()
-	{
-		float zoomScale = Input.GetAxis("MouseWheelDown", "MouseWheelUp");
-		if ( zoomScale != 0 )
-		{
-			GD.Print(zoomScale);
-			_camera.Zoom *= zoomScale * 2;
-		}
-	}
-
 	private void MouseFocus ()
 	{
-		if ( Input.IsActionJustPressed("PAUSE (ESC)") )
-		{
-			_inPauseMenu = !_inPauseMenu;
-			_pauseLabel.Visible = _inPauseMenu;
-		}
-
 		if ( _inPauseMenu )
 		{
 			Input.MouseMode = Input.MouseModeEnum.Visible;
