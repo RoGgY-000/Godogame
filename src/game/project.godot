@@ -37,6 +37,7 @@ folder_colors={
 "res://Scenes/": "gray",
 "res://Scenes/Bullets/": "yellow",
 "res://Scenes/Enemies/": "red",
+"res://Scenes/EnemySpawner/": "purple",
 "res://Scenes/MainScene/": "orange",
 "res://Scenes/Player/": "blue",
 "res://Scenes/Towers/": "teal",
