@@ -1,17 +1,10 @@
 using Godot;
+
 public partial class GameManager : Node2D
 {
 	public static GameManager Instance { get; private set; }
 
 	public bool IsInPause = false;
-
-	public override void _Ready ()
-	{
-	}
-
-	public override void _Process (double delta)
-	{
-	}
 
 	public override void _EnterTree ()
 	{

@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class PlayerBase : MeshInstance2D
 {
@@ -9,6 +8,7 @@ public partial class PlayerBase : MeshInstance2D
 	private Area2D _hitBox;
 	private Label _hpText;
 	private ProgressBar _hpBar;
+
 	public override void _Ready ()
 	{
 		_hitBox = GetNode<Area2D>("HitBox");
@@ -29,11 +29,6 @@ public partial class PlayerBase : MeshInstance2D
 			_hpBar.MaxValue = Health;
 			_hpBar.Value = Health;
 		}
-	}
-
-	public override void _Process (double delta)
-	{
-		
 	}
 
 	private void UpdateHP ()

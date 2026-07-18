@@ -1,27 +1,25 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 
 public partial class BaseTower : MeshInstance2D
 {
 	[Export]
-	public PackedScene BulletScene { get; set; }
+	public PackedScene BulletScene;
 
 	[Export]
-	public Node2D BulletSpawnPoint { get; set; }
+	public Node2D BulletSpawnPoint;
 
 	[Export]
-	public float ReloadTime { get; set; }
+	public float ReloadTime;
 
 	[Export]
-	public int Damage { get; set; }
+	public int Damage;
 
 	[Export]
-	public float AttackRange { get; set; }
+	public float AttackRange;
 
 	private Area2D _targetTrigger;
 	private ProgressBar _reloadBar;
-
 	private List<BaseEnemy> _targetEnemies;
 	private double _timer;
 

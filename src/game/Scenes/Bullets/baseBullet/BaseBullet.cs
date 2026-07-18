@@ -1,21 +1,20 @@
 using Godot;
-using System;
 
 public partial class BaseBullet : StaticBody2D
 {
 	[Export]
-	public Vector2 Velocity { get; set; }
+	public Vector2 Velocity;
 
 	[Export]
-	public float Speed { get; set; }
+	public float Speed;
 
 	[Export]
-	public int Damage { get; set; }
+	public float Range;
 
 	[Export]
-	public float Range { get; set; }
+	public int Damage;
 
-	public BaseEnemy Target { get; set; }
+	public BaseEnemy Target;
 
 	private float _sqrRange;
 
@@ -45,10 +44,5 @@ public partial class BaseBullet : StaticBody2D
 		{
 			QueueFree();
 		}
-	}
-
-	public override void _Process (double delta)
-	{
-
 	}
 }

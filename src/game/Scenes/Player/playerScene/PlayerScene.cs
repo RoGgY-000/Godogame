@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.ComponentModel;
 
 public partial class PlayerScene : Node2D
 {
@@ -34,35 +32,6 @@ public partial class PlayerScene : Node2D
 		}
 	}
 
-	private void ProcessMouseInput (InputEventMouseButton mouseButtonEvent)
-	{
-		switch ( mouseButtonEvent.ButtonIndex )
-		{
-			case MouseButton.WheelUp:
-				_camera.Zoom += Vector2.One;
-				break;
-			case MouseButton.WheelDown:
-				_camera.Zoom *= 0.5f;
-				break;
-			default:
-				break;
-		}
-	}
-
-	private void ProcessKeyboardInput (InputEventKey keyEvent)
-	{
-		switch ( keyEvent.Keycode )
-		{
-			case Key.Escape when keyEvent.IsPressed():
-				_inPauseMenu = !_inPauseMenu;
-				_pauseLabel.Visible = _inPauseMenu;
-				MouseFocus();
-				break;
-			default:
-				break;
-		}
-	}
-
 	private void Move ()
 	{
 		GlobalPosition +=
@@ -81,6 +50,35 @@ public partial class PlayerScene : Node2D
 		else if ( !_inPauseMenu )
 		{
 			Input.MouseMode = Input.MouseModeEnum.Confined;
+		}
+	}
+
+	private void ProcessKeyboardInput (InputEventKey keyEvent)
+	{
+		switch ( keyEvent.Keycode )
+		{
+			case Key.Escape when keyEvent.IsPressed():
+				_inPauseMenu = !_inPauseMenu;
+				_pauseLabel.Visible = _inPauseMenu;
+				MouseFocus();
+				break;
+			default:
+				break;
+		}
+	}
+
+	private void ProcessMouseInput (InputEventMouseButton mouseButtonEvent)
+	{
+		switch ( mouseButtonEvent.ButtonIndex )
+		{
+			case MouseButton.WheelUp:
+				_camera.Zoom += Vector2.One;
+				break;
+			case MouseButton.WheelDown:
+				_camera.Zoom *= 0.5f;
+				break;
+			default:
+				break;
 		}
 	}
 }

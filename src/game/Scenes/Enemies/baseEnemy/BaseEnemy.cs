@@ -3,14 +3,14 @@ using Godot;
 public partial class BaseEnemy : MeshInstance2D
 {
 	[Export]
-	public int Health { get; set; }
+	public int Health;
 
 	[Export]
-	public float Speed { get; set; }
+	public float Speed;
 
 	private Area2D _hitBox;
-	private PathFollow2D _pathFollow;
 	private Label _HPText;
+	private PathFollow2D _pathFollow;
 	private ProgressBar _HPBar;
 
 	public override void _Ready ()
@@ -31,6 +31,7 @@ public partial class BaseEnemy : MeshInstance2D
 		CorrectRotation();
 
 	}
+
 	private void CorrectRotation ()
 	{
 		if ( GlobalRotationDegrees > 90 )
@@ -42,6 +43,12 @@ public partial class BaseEnemy : MeshInstance2D
 			GlobalRotationDegrees += 180;
 		}
 	}
+
+	public void Kill ()
+	{
+		QueueFree();
+	}
+
 	private void UpdateHP ()
 	{
 		if ( Health <= 0 )
@@ -69,10 +76,5 @@ public partial class BaseEnemy : MeshInstance2D
 			bullet.QueueFree();
 			Health -= bullet.Damage;
 		}
-	}
-
-	public void Kill ()
-	{
-		QueueFree();
 	}
 }
