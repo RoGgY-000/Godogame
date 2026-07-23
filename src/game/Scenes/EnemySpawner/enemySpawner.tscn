@@ -4,4 +4,3 @@
 
 [node name="EnemySpawner" type="Node2D" unique_id=1298846436]
 script = ExtResource("1_12xt2")
-_waves = Array[Object]([])

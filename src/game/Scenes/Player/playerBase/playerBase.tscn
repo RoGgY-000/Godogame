@@ -37,7 +37,6 @@ corner_radius_bottom_left = 6
 self_modulate = Color(0, 1, 1, 1)
 mesh = SubResource("QuadMesh_l0cfn")
 script = ExtResource("1_syua7")
-Health = 100
 
 [node name="HitBox" type="Area2D" parent="." unique_id=165054234]
 

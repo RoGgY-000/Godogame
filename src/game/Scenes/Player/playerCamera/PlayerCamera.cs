@@ -1,19 +1,17 @@
-using System;
-using System.ComponentModel;
 using Godot;
 
 public partial class PlayerCamera : Camera2D
 {
-	[Export]
+	[Export(PropertyHint.Range, "0.01, 1")]
 	private float _minZoom = 0.25f;
 
-	[Export]
+	[Export(PropertyHint.Range, "1, 100")]
 	private float _maxZoom = 2.0f;
 
-	[Export]
+	[Export(PropertyHint.Range, "0.01, 100")]
 	private float _zoomSpeed = 0.5f;
 
-	[Export]
+	[Export(PropertyHint.Range, "0, 1000000")]
 	private float _moveSpeed = 1000f;
 
 	private Vector2 _targetZoom;
@@ -31,8 +29,8 @@ public partial class PlayerCamera : Camera2D
 	{	
 		if(_targetPosition != GlobalPosition && _targetZoom != Zoom)
 		{
-			GlobalPosition = GlobalPosition.Lerp(_targetPosition, (float)delta);
-			Zoom = Zoom.Lerp(_targetZoom, (float)delta);
+			GlobalPosition = GlobalPosition.Lerp(_targetPosition, 1f); // (float)delta);
+			Zoom = Zoom.Lerp(_targetZoom, 1f); // (float)delta);
 		}
 		
 		Move(delta);

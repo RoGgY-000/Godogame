@@ -2,8 +2,8 @@ using Godot;
 
 public partial class PlayerBase : MeshInstance2D
 {
-	[Export]
-	public int Health;
+	[Export(PropertyHint.Range, "1, 1000000")]
+	public int Health = 1;
 
 	private Area2D _hitBox;
 	private Label _hpText;
@@ -50,6 +50,10 @@ public partial class PlayerBase : MeshInstance2D
 			Health -= enemy.Health;
 			enemy.Kill();
 			UpdateHP();
+		}
+		if ( Health <= 0 )
+		{
+			QueueFree();
 		}
 	}
 }

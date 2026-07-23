@@ -2,11 +2,11 @@ using Godot;
 
 public partial class BaseEnemy : MeshInstance2D
 {
-	[Export]
-	public int Health;
+	[Export(PropertyHint.Range, "1, 1000000")]
+	public int Health = 1;
 
-	[Export]
-	public float Speed;
+	[Export(PropertyHint.Range, "0, 10000")]
+	public float Speed = 100;
 
 	private Area2D _hitBox;
 	private Label _HPText;
@@ -74,7 +74,7 @@ public partial class BaseEnemy : MeshInstance2D
 		if ( body is BaseBullet bullet )
 		{
 			bullet.QueueFree();
-			Health -= bullet.Damage;
+			Health -= (int)Mathf.Round(bullet.Damage);
 		}
 	}
 }

@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using System.Collections.Generic;
 
@@ -9,27 +10,34 @@ public partial class BaseTower : MeshInstance2D
 	[Export]
 	public Node2D BulletSpawnPoint;
 
-	[Export]
-	public float ReloadTime;
+	[Export(PropertyHint.Range, "0.01, 100")]
+	public float ReloadTime = 1f;
 
-	[Export]
-	public int Damage;
+	[Export(PropertyHint.Range, "0, 1000000")]
+	public int Damage = 1;
 
-	[Export]
-	public float AttackRange;
+	[Export(PropertyHint.Range, "0, 10000")]
+	public float Speed = 1000f;
 
+	private List<BaseEnemy> _targetEnemies;
 	private Area2D _targetTrigger;
 	private ProgressBar _reloadBar;
-	private List<BaseEnemy> _targetEnemies;
 	private double _timer;
+	private float _attackRange;
 
 	public override void _Ready ()
 	{
 		_targetTrigger = GetNode<Area2D>("TargetTrigger");
 		if ( _targetTrigger != null )
 		{
-		_targetTrigger.AreaEntered += OnAreaEntered;
+			_targetTrigger.AreaEntered += OnAreaEntered;
 			_targetTrigger.AreaExited += OnAreaExited;
+			CollisionShape2D shape = _targetTrigger.GetNode<CollisionShape2D>("AttackArea");
+			if ( shape != null )
+			{
+				Vector2 size = shape.Shape.GetRect().Size;
+				_attackRange = Mathf.Max(size.X/2, size.Y/2);
+			}
 		}
 
 		_reloadBar = GetNode<ProgressBar>("ReloadBar");
@@ -38,6 +46,13 @@ public partial class BaseTower : MeshInstance2D
 			_reloadBar.MaxValue = ReloadTime;
 		}
 		_targetEnemies = new List<BaseEnemy>();
+
+		Node node = BulletScene.Instantiate();
+		if ( node is not BaseBullet bullet )
+		{
+			throw new Exception("Wrong scene for Bullet");
+		}
+		node.QueueFree();
 	}
 
 	public override void _Process (double delta)
@@ -81,8 +96,9 @@ public partial class BaseTower : MeshInstance2D
 		BaseBullet bullet = BulletScene.Instantiate<BaseBullet>();
 		bullet.Target = enemy;
 		bullet.Position = BulletSpawnPoint.Position;
-		bullet.Range *= AttackRange;
-		bullet.Damage *= Damage;
+		bullet.Range = _attackRange;
+		bullet.Damage = Damage;
+		bullet.Speed = Speed;
 		AddChild(bullet);
 	}
 

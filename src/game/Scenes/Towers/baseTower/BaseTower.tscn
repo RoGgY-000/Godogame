@@ -40,13 +40,10 @@ mesh = SubResource("SphereMesh_bi37a")
 script = ExtResource("1_mm5uj")
 BulletScene = ExtResource("2_orx0w")
 BulletSpawnPoint = NodePath("BulletSpawnPoint")
-ReloadTime = 1.0
-Damage = 1
-AttackRange = 500.0
 
 [node name="TargetTrigger" type="Area2D" parent="." unique_id=200545308]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetTrigger" unique_id=1279202941]
+[node name="AttackArea" type="CollisionShape2D" parent="TargetTrigger" unique_id=1279202941]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_l0cfn")
 
