@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dr1fsyocwljrc"]
+
+[ext_resource type="PackedScene" uid="uid://pp3fspfvic01" path="res://Scenes/Building/Towers/baseTower/baseTower.tscn" id="1_f1c6p"]
+[ext_resource type="Texture2D" uid="uid://bmkptosew4icj" path="res://Assets/Sprites/Towers/MageTower1.tres" id="2_23c5b"]
+
+[node name="MageTower" unique_id=756045656 instance=ExtResource("1_f1c6p")]
+
+[node name="Sprite" parent="." index="0" unique_id=1241410175]
+texture = ExtResource("2_23c5b")
+
+[node name="HitBox" type="Area2D" parent="Sprite" index="0" unique_id=1721113083]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Sprite/HitBox" index="0" unique_id=1184927460]
+polygon = PackedVector2Array(9.666667, -8.666667, 8.666667, -8.666667, 8.666667, -9.666667, 7.666667, -9.666667, 7.666667, -10.666667, 6.666667, -10.666667, 6.666667, -11.666667, 3.6666667, -11.666667, 3.6666667, -12.666667, -3.6666667, -12.666667, -3.6666667, -11.666667, -6.666667, -11.666667, -6.666667, -10.666667, -7.666667, -10.666667, -7.666667, -9.666667, -8.666667, -9.666667, -8.666667, -8.666667, -9.666667, -8.666667, -9.666667, -2.3333335, -8.666667, -2.3333335, -8.666667, 2.3333335, -9.666667, 2.3333335, -9.666667, 8.666667, -8.666667, 8.666667, -8.666667, 9.666667, -7.666667, 9.666667, -7.666667, 10.666667, -6.666667, 10.666667, -6.666667, 11.666667, -3.6666667, 11.666667, -3.6666667, 12.666667, 3.6666667, 12.666667, 3.6666667, 11.666667, 6.666667, 11.666667, 6.666667, 10.666667, 7.666667, 10.666667, 7.666667, 9.666667, 8.666667, 9.666667, 8.666667, 8.666667, 9.666667, 8.666667, 9.666667, 2.3333335, 8.666667, 2.3333335, 8.666667, -2.3333335, 9.666667, -2.3333335)
+
+[node name="BulletSpawnPoint" parent="." index="1" unique_id=1990295330]
+position = Vector2(0, -19)
+
+[node name="ReloadBar" parent="." index="2" unique_id=1129312605]
+offset_top = -50.0
+offset_bottom = -40.0

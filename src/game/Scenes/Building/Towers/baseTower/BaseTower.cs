@@ -2,7 +2,7 @@ using System;
 using Godot;
 using System.Collections.Generic;
 
-public partial class BaseTower : MeshInstance2D
+public partial class BaseTower : Node2D
 {
 	[Export]
 	public PackedScene BulletScene;
@@ -69,7 +69,7 @@ public partial class BaseTower : MeshInstance2D
 		};
 		_rangeMesh.Mesh = mesh;
 
-		_hitBox = GetNode<Area2D>("HitBox");
+		_hitBox = GetNode<Area2D>("Sprite/HitBox");
 		ArgumentNullException.ThrowIfNull(_hitBox);
 		_hitBox.MouseEntered += () => _rangeMesh.Visible = true;
 		_hitBox.MouseExited += () => _rangeMesh.Visible = false;
