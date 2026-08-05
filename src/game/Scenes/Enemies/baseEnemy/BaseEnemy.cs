@@ -8,6 +8,9 @@ public partial class BaseEnemy : MeshInstance2D
 	[Export(PropertyHint.Range, "0, 10000")]
 	public float Speed = 100;
 
+	[Export(PropertyHint.Range, "0, 1000, or_greater")]
+	public int Reward = 1;
+
 	private Area2D _hitBox;
 	private Label _HPText;
 	private PathFollow2D _pathFollow;
@@ -46,6 +49,7 @@ public partial class BaseEnemy : MeshInstance2D
 
 	public void Kill ()
 	{
+		GameManager.Instance.Money += Reward;
 		QueueFree();
 	}
 

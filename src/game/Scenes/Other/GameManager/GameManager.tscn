@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cndydu21uy1wg"]
+
+[ext_resource type="Script" uid="uid://d3xssi0q671s7" path="res://Scenes/Other/GameManager/GameManager.cs" id="1_lgdva"]
+
+[node name="GameManager" type="Node" unique_id=2040128480]
+script = ExtResource("1_lgdva")

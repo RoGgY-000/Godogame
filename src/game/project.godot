@@ -15,10 +15,6 @@ run/main_scene="uid://f03vfldof3dd"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
-[autoload]
-
-GameManager="*uid://d3xssi0q671s7"
-
 [display]
 
 window/size/viewport_width=1280
@@ -35,12 +31,13 @@ project/assembly_name="game"
 folder_colors={
 "res://Assets/": "gray",
 "res://Scenes/": "gray",
+"res://Scenes/Building/": "green",
+"res://Scenes/Building/Towers/": "teal",
 "res://Scenes/Bullets/": "yellow",
 "res://Scenes/Enemies/": "red",
 "res://Scenes/EnemySpawner/": "purple",
 "res://Scenes/MainScene/": "orange",
 "res://Scenes/Player/": "blue",
-"res://Scenes/Towers/": "teal",
 "res://Scripts/": "pink"
 }
 

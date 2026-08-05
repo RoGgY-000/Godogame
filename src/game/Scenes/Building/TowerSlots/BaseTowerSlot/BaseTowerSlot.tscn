@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d3opjc0gej350"]
+
+[ext_resource type="Script" uid="uid://3xtnbgicgaom" path="res://Scenes/Building/TowerSlots/BaseTowerSlot/BaseTowerSlot.cs" id="1_c47fg"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_l0cfn"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0cfn"]
+size = Vector2(80, 80)
+
+[node name="BaseTowerSlot" type="MeshInstance2D" unique_id=261055091]
+self_modulate = Color(1, 1, 0, 1)
+mesh = SubResource("QuadMesh_l0cfn")
+script = ExtResource("1_c47fg")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1292513566]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=2068984968]
+shape = SubResource("RectangleShape2D_l0cfn")

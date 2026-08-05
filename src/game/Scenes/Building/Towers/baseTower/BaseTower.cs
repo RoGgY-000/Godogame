@@ -19,6 +19,11 @@ public partial class BaseTower : MeshInstance2D
 	[Export(PropertyHint.Range, "0, 10000")]
 	public float Speed = 1000f;
 
+	[Export(PropertyHint.Range, "0, 1000, or_greater")]
+	public int Cost = 1;
+
+	private Area2D _hitBox;
+	private MeshInstance2D _rangeMesh;
 	private List<BaseEnemy> _targetEnemies;
 	private Area2D _targetTrigger;
 	private ProgressBar _reloadBar;
@@ -53,6 +58,21 @@ public partial class BaseTower : MeshInstance2D
 			throw new Exception("Wrong scene for Bullet");
 		}
 		node.QueueFree();
+
+		_rangeMesh = GetNode<MeshInstance2D>("RangeMesh");
+		ArgumentNullException.ThrowIfNull(_rangeMesh);
+		_rangeMesh.Visible = false;
+		SphereMesh mesh = new()
+		{
+			Radius = _attackRange,
+			Height = _attackRange * 2
+		};
+		_rangeMesh.Mesh = mesh;
+
+		_hitBox = GetNode<Area2D>("HitBox");
+		ArgumentNullException.ThrowIfNull(_hitBox);
+		_hitBox.MouseEntered += () => _rangeMesh.Visible = true;
+		_hitBox.MouseExited += () => _rangeMesh.Visible = false;
 	}
 
 	public override void _Process (double delta)
