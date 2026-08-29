@@ -1,17 +1,19 @@
 using Godot;
 using System;
 
-public partial class BaseTowerSlot : MeshInstance2D
+public partial class BaseTowerSlot : Node2D
 {
 	[Export]
 	private PackedScene _towerScene;
-
+	private MeshInstance2D _mesh;
 	private Area2D _hitBox;
 	private bool _isMouseHover = false;
 	private bool _towerSpawned = false;
 	public override void _Ready()
 	{
-		_hitBox = GetNode<Area2D>("HitBox");
+		_mesh = GetNode<MeshInstance2D>("Mesh");
+
+		_hitBox = GetNode<Area2D>("Mesh/HitBox");
 		ArgumentNullException.ThrowIfNull(_hitBox);
 		_hitBox.MouseEntered += () => _isMouseHover = true;
 		_hitBox.MouseExited += () => _isMouseHover = false;
@@ -52,7 +54,7 @@ public partial class BaseTowerSlot : MeshInstance2D
 			{
 				AddChild(tower);
 				GameManager.Instance.Money -= tower.Cost;
-				_towerSpawned = true;
+				_mesh.QueueFree();
 			}
 		}
 	}

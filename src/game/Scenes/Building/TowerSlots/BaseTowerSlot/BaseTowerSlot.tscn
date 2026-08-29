@@ -8,12 +8,14 @@ size = Vector2(80, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0cfn"]
 size = Vector2(80, 80)
 
-[node name="BaseTowerSlot" type="MeshInstance2D" unique_id=261055091]
-self_modulate = Color(1, 1, 0, 1)
-mesh = SubResource("QuadMesh_l0cfn")
+[node name="SpawnPoint" type="Node2D" unique_id=528980302]
 script = ExtResource("1_c47fg")
 
-[node name="HitBox" type="Area2D" parent="." unique_id=1292513566]
+[node name="Mesh" type="MeshInstance2D" parent="." unique_id=261055091]
+self_modulate = Color(1, 1, 0, 1)
+mesh = SubResource("QuadMesh_l0cfn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=2068984968]
+[node name="HitBox" type="Area2D" parent="Mesh" unique_id=1292513566]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mesh/HitBox" unique_id=2068984968]
 shape = SubResource("RectangleShape2D_l0cfn")
