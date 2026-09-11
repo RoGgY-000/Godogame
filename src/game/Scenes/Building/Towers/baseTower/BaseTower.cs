@@ -105,7 +105,7 @@ public partial class BaseTower : Node2D
 	}
 	private void OnAreaExited (Area2D area)
 	{
-		if ( area.GetParent<BaseEnemy>() is BaseEnemy enemy )
+		if ( area.GetParentOrNull<BaseEnemy>() is BaseEnemy enemy )
 		{
 			_targetEnemies.Remove(enemy);
 		}
