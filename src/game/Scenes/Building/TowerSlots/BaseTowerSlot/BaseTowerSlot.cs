@@ -50,6 +50,7 @@ public partial class BaseTowerSlot : Node2D
 		if ( !_towerSpawned )
 		{
 			BaseTower tower = _towerScene.Instantiate<BaseTower>();
+			_towerSpawned = true;
 			if ( GameManager.Instance.Money >= tower.Cost )
 			{
 				AddChild(tower);
