@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://n7bjedksfric"]
+
+[ext_resource type="PackedScene" uid="uid://d3opjc0gej350" path="res://Scenes/Building/TowerSlots/BaseTowerSlot/baseTowerSlot.tscn" id="1_0j4lf"]
+[ext_resource type="PackedScene" uid="uid://dr1fsyocwljrc" path="res://Scenes/Building/Towers/mageTower/mageTower.tscn" id="2_n5hgg"]
+
+[node name="SpawnPoint" unique_id=528980302 instance=ExtResource("1_0j4lf")]
+_towerScene = ExtResource("2_n5hgg")
